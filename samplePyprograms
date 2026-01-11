@@ -1,0 +1,122 @@
+# Displays the Python version
+# Checks if important libraries are installed & importable
+import sys
+import importlib
+
+def show_python_version():
+    print("🐍 Python Version Information")
+    print("-" * 30)
+    print(f"Version       : {sys.version}")
+    print(f"Version Info  : {sys.version_info}")
+    print()
+
+
+def check_libraries(libraries):
+    print("📦 Library Availability Check")
+    print("-" * 30)
+
+    for lib in libraries:
+        try:
+            importlib.import_module(lib)
+            print(f"✔ {lib} : AVAILABLE")
+        except ImportError:
+            print(f"✖ {lib} : NOT INSTALLED")
+
+    print()
+
+
+if __name__ == "__main__":
+    show_python_version()
+
+    important_libraries = [
+        "os",
+        "sys",
+        "math",
+        "json",
+        "datetime",
+        "re",
+        "numpy",
+        "pandas",
+        "requests",
+        "matplotlib"
+    ]
+
+    check_libraries(important_libraries)
+--------------------------------------------------------------------------------------------------------------
+#Assignment1: Print statusment asking input
+firstName= input("First Name pls")
+lastName=input("Last name pls")
+print("Hello,",firstName.strip(), lastName.strip(),"! Welcome to the Python world.")
+---------------------------------------------------------------------------------------------------------------
+#Assignemnt2: Swap without temp variable
+a = input("Enter a fist number")
+b = input("Enter b sec number")
+print("Before swap values of a and b are:", a,b)
+#Swap values
+a,b=b,a
+print("After swap values of a and b are:", a,b)
+---------------------------------------------------------------------------------------------------------------
+#Basic calculator
+a = float(input("Number a").strip())
+b = float(input("Number b").strip())
+op = input("The operation + - % * ** //").strip()
+if op == "+":
+  result=a+b
+elif op == '-':
+  result=a-b
+elif op == '*':
+  result=a*b
+elif op == '/':
+  result=a/b
+elif op == '//':
+  result=a//b
+elif op == '**':
+  result=a**b
+print("The result of operation is: ", result)
+----------------------------------------------------------------------------------------------------------------
+apple=int(input("Apple quantity needed"))
+costOfApp=float(input("Cost/apple"))
+banana=int(input("Banana quantity needed"))
+costOfBan=float(input("cost/Banana"))
+total = apple*costOfApp + banana*costOfBan
+print(total)
+if int(total)<50:
+  print("No discount applied and need to pay:", total)
+elif total >= 50 and total < 100:
+  discount = int(total) *.05
+  total = total - discount
+  print("Discount of: ", discount, "applied and need to pay ", total)
+elif total>=100:
+  discount = total *.1
+  total = total - discount
+  print("Discount of: ", discount, "applied and need to pay ", total)
+------------------------------------------------------------------------------------------------------------------
+#Discount with functions Total, Discount, final amount
+
+def cal_total(quantity, price):
+  return quantity*price
+
+def apply_discount(total):
+  if total > 100:
+    discount=total*0.1
+  elif total >50:
+    discount=total*0.05
+  else:
+    discount=0
+
+  final_amount = total-discount
+  return final_amount, discount
+
+quantity = int(input("Enter quantity"))
+price = float(input("Enter price"))
+
+total = cal_total(quantity, price)
+final_amount, discount = apply_discount(total)
+
+print("Total cost", total)
+
+if discount>0:
+  print("Discount applied", discount)
+else:
+  print("NO discount applied!")
+
